@@ -4,4 +4,4 @@ global:
 scrape_configs:
   - job_name: 'backend'
     static_configs:
-      - targets: ['host.docker.internal:3000'] # or 'backend:4000' if inside same compose network
+      - targets: ['host.docker.internal:3000']

@@ -6,7 +6,6 @@ const client = require('prom-client');
 
 const app = express();
 
-// Register and collect default system metrics
 const register = client.register;
 client.collectDefaultMetrics();
 
@@ -15,7 +14,6 @@ const requestCounter = new client.Counter({
   help: 'Total number of HTTP requests'
 });
 
-// Count all requests
 app.use((req, res, next) => {
   requestCounter.inc();
   next();
@@ -29,14 +27,14 @@ app.get('/status', (req, res) => {
   });
 });
 
-// FIXED Metrics endpoint
+// Metrics endpoint
 app.get('/metrics', async (req, res) => {
   try {
-    const metrics = await register.metrics();   // MUST await
+    const metrics = await register.metrics();
     res.set('Content-Type', register.contentType);
-    res.send(metrics);                          // MUST send()
+    res.send(metrics);
   } catch (err) {
-    res.status(500).send(err.toString());       // MUST send a string
+    res.status(500).send(err.toString());
   }
 });
 

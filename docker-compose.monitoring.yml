@@ -11,7 +11,7 @@ services:
   grafana:
     image: grafana/grafana
     ports:
-      - "4000:3000"  # FIXED
+      - "4000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
 
