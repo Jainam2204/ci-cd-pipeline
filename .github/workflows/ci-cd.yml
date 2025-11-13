@@ -29,4 +29,5 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-backend:latest
+          tags: jainam1111/ci-cd-backend:latest
+
